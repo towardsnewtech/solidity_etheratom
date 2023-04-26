@@ -1,0 +1,128 @@
+{
+  "name": "etheratom",
+  "main": "build/main.js",
+  "version": "4.6.0",
+  "description": "Solidity compilation and Ethereum contract execution interface for hackable atom editor.",
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "web3",
+    "ethereumjs"
+  ],
+  "activationCommands": {
+    "atom-workspace": [
+      "eth-interface:activate",
+      "eth-interface:toggle"
+    ],
+    "atom-text-editor[data-grammar~=\"solidity\"]:not([mini])": [
+      "eth-interface:compile"
+    ]
+  },
+  "activationHooks": [
+    "core:loaded-shell-environment"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0mkara/etheratom"
+  },
+  "bugs": {
+    "url": "https://github.com/0mkara/etheratom/issues"
+  },
+  "license": "GPLv3",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "package-deps": [
+    "language-solidity"
+  ],
+  "dependencies": {
+    "atom-message-panel": "^1.2.7",
+    "atom-package-deps": "^5.0.0",
+    "axios": "^0.18.0",
+    "blob": "0.0.5",
+    "create-react-class": "^15.6.2",
+    "eslint-import-resolver-node": "^0.3.2",
+    "file-saver": "^2.0.0",
+    "idempotent-babel-polyfill": "^7.0.0",
+    "md5": "^2.2.1",
+    "prop-types": "^15.6.1",
+    "react": "16.8.3",
+    "react-addons-update": "^15.4.2",
+    "react-checkbox-tree": "1.4.0",
+    "react-collapse": "^4.0.3",
+    "react-dom": "^16.8.3",
+    "react-json-view": "1.19.1",
+    "react-motion": "^0.5.2",
+    "react-redux": "^5.0.7",
+    "react-spinners": "^0.5.13",
+    "react-tabs": "3.0.0",
+    "react-tiny-virtual-list": "2.2.0",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "remix-analyzer": "^0.3.1",
+    "remix-debug": "^0.3.16",
+    "remix-lib": "^0.4.14",
+    "remix-solidity": "0.3.1",
+    "remix-tests": "0.1.14",
+    "shelljs": "^0.8.3",
+    "solc": "^0.5.13",
+    "valid-url": "^1.0.9",
+    "web3": "^1.0.0-beta.35"
+  },
+  "configSchema": {
+    "rpcAddress": {
+      "title": "Ethereum rpc endpoint:",
+      "description": "Point to local ethereum rpc endpoint. Used as HttpProvider.",
+      "type": "string",
+      "default": "",
+      "order": 1
+    },
+    "websocketAddress": {
+      "title": "Ethereum websocket endpoint:",
+      "description": "Point to local ethereum websocket endpoint. Used as WebsocketProvider.",
+      "type": "string",
+      "default": "",
+      "order": 2
+    },
+    "compileOnSave": {
+      "title": "Compile Solidity on Save",
+      "description": "Compile solidity code each time a file is saved",
+      "type": "boolean",
+      "default": true,
+      "order": 3
+    },
+    "versionSelector": {
+      "title": "Solidity compiler version:",
+      "description": "Selected version of Solidity compiler",
+      "type": "string",
+      "default": "latest",
+      "order": 4
+    }
+  },
+  "scripts": {
+    "postinstall": "npm install solc && node ./formatSolc.js",
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@babel/core": "7.3.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.3.2",
+    "@babel/preset-env": "7.3.1",
+    "@babel/preset-react": "7.0.0",
+    "@types/web3": "^1.0.19",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-emotion": "^10.0.14",
+    "eslint": "^5.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-standard": "^4.0.0",
+    "rollup-plugin-babel": "4.3.0",
+    "rollup-plugin-commonjs": "9.2.1",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^4.0.0"
+  }
+}
